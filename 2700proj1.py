@@ -36,6 +36,7 @@ def options(opt):
             return 'c'
         elif opt.upper()=="QUIT":
             quit_on_demand()
+        opt = input("Invalid answer. Please Try again.")
 
 """
 Use: for giving the answer to how much questions 
@@ -70,14 +71,26 @@ def game_loop(inp):
                 print("Question 1")
                 q = "How often would you say that you find yourself lost in thought or distracted by your surroundings?\n"
                 q+= "Please enter a number from 1-5, with 1 meaning never and 5 meaning all the time."
-                inp= how_much(q)
-                res2= res1+inp
-                print(inp)
+                inpu= how_much(q)
+                res2= res1+inpu
+                print(inpu)
             case 1:
+                print("Question 2")
                 q= "Would you consider yourself to be a strong leader? Type y or n to answer.\n"
                 res1 += y_or_n(input(q))
             case 2:
-                print("question 3")
+                print("Question 3")
+                q = "When given the option of what to do with your day, what would you pick?\n"
+                q += "A: Study and catch up on work.\n"
+                q += "B: Spend Time with family and friends\n"
+                q += "C: Hit the gym and relax after. \n"
+                ans = options(input(q))
+                if ans == 'a':
+                    res1+=5
+                elif ans == 'b':
+                    res2+=5
+                elif ans == 'c':
+                    res3+=5
             case 3:
                 print("question 4")
             case 4:
