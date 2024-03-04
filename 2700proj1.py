@@ -5,11 +5,12 @@ Names: Lora Elliott and Shubheksha Acharya
 
 #Small function to allow the program to gracefully terminate at will.
 def quit_on_demand():
-    print("You have chosen to exit the quiz. \n Now terminating...")
+    print("You are now exiting the quiz... \n")
     quit()
 
 #Use: for giving the answer to yes or no questions
 def y_or_n(inp):
+    inv_input=0
     while True:
         if(inp.upper()=="YES" or inp.upper()=="Y"):
             ans = True
@@ -19,7 +20,10 @@ def y_or_n(inp):
             return 0
         elif(inp.upper()=="QUIT"):
             quit_on_demand()
-
+        inv_input +=1
+        if inv_input>4:
+            print("You have entered invalid input too many times. Now terminating...")
+            quit_on_demand()
         inp = input("Invalid Input: try again")
         y_or_n(inp)
 
@@ -27,7 +31,8 @@ def y_or_n(inp):
 Used for questions that have multiple answer choices. Takes a response of a, b, or c
 '''
 def options(opt):
-     while True:
+    inv_count = 0
+    while True:
         if opt.upper()=="A":
             return 'a'
         elif opt.upper()=="B":
@@ -36,7 +41,12 @@ def options(opt):
             return 'c'
         elif opt.upper()=="QUIT":
             quit_on_demand()
+        inv_count+=1
+        if inv_count > 4:
+            print("You have entered invalid input too many times. Now terminating...")
+            quit_on_demand()
         opt = input("Invalid answer. Please Try again.")
+        
 
 """
 Use: for giving the answer to how much questions 
@@ -46,16 +56,19 @@ q: represents the question you want to ask
 """
 def how_much(q):
     print(q)
+    inv_count = 0;
     while True:
         try:
             inp = int(input("Enter an integer input from 1-5:"))
             if inp>=1 and inp<6:
                 return inp
-            else:
-                print("Invalid input. Now terminating...")
-                quit_on_demand()
         except:
             input("Your input was not a number. Try again.")
+            inv_count+=1
+            if inv_count>4:
+                print("You have entered invalid input too many times. Now terminating...")
+                quit_on_demand()
+
 
 """Loops until an input number is reached. If quiz has 5 questions
 inp = 5. Can either be modified to have questions directly inside each case or """
