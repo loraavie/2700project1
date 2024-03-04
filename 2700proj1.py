@@ -192,7 +192,7 @@ def ending3():
 print("Welcome to our personality quiz. Answer a few questions to find out which Powerpuff Girl you are.")
 print("To end the game, enter quit at any time.")
 
-game_loop(9)
+game_loop(10)
 while True:
     play_again = input("If you would like to take the quiz again, enter y. \nEnter anything else to exit.\n")
     if play_again == "y" or play_again == "Y":
