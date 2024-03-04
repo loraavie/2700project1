@@ -46,7 +46,7 @@ def options(opt):
             print("You have entered invalid input too many times. Now terminating...")
             quit_on_demand()
         opt = input("Invalid answer. Please Try again.")
-        
+
 
 """
 Use: for giving the answer to how much questions 
@@ -60,6 +60,8 @@ def how_much(q):
     while True:
         try:
             inp = int(input("Enter an integer input from 1-5:"))
+            # if inp.lower() == "quit":
+            #     quit_on_demand()
             if inp>=1 and inp<6:
                 return inp
         except:
@@ -86,7 +88,6 @@ def game_loop(inp):
                 q+= "Please enter a number from 1-5, with 1 meaning never and 5 meaning all the time."
                 inpu= how_much(q)
                 res2= res1+inpu
-                print(inpu)
             case 1:
                 print("Question 2")
                 q= "Would you consider yourself to be a strong leader? Type y or n to answer.\n"
@@ -106,8 +107,70 @@ def game_loop(inp):
                     res3+=5
             case 3:
                 print("question 4")
+                q = "You are at the convenient store and want to get a little treat. Which one do you get?\n"
+                q += "A: A frozen drink (Slushie/ICEE)\n"
+                q += "B: A candy bar. \n"
+                q += "C: A bag of chips \n"
+                ans = options(input(q))
+                if ans == 'a':
+                    res2+=5
+                elif ans == 'b':
+                    res1+=5
+                elif ans == 'c':
+                    res3+=5
             case 4:
                 print("question 5")
+                q = "Whenever you have an assignment to complete, when do you start on it?\n"
+                q+= "Please enter a number from 1-5, with 1 meaning immediately and 5 meaning right before it is due."
+                inpu= how_much(q)
+                if inpu<3:
+                    res1+=5
+                elif inpu>3:
+                    res2+=5
+                else:
+                    res3+=5
+            case 5:
+                print("question 6")
+                q = "What is your favorite color out of the given options?\n"
+                q += "A: Green\n"
+                q += "B: Red \n"
+                q += "C: Blue \n"
+                ans = options(input(q))
+                if ans == 'a':
+                    res3+=5
+                elif ans == 'b':
+                    res1+=5
+                elif ans == 'c':
+                    res2+=5
+            case 6:
+                print("question 7")
+                q= "Whenever you pick out your outfit in the morning is comfort the most important thing to you? \nType y or n to answer.\n"
+                res3 += y_or_n(input(q))
+            case 7:
+                print("question 8")
+                q = "Which of these holidays do you like the best?\n"
+                q += "A: Christmas\n"
+                q += "B: Halloween \n"
+                q += "C: Valentines Day \n"
+                ans = options(input(q))
+                if ans == 'a':
+                    res1+=5
+                elif ans == 'b':
+                    res3+=5
+                elif ans == 'c':
+                    res2+=5
+            case 8:
+                print("question 9")
+                q = "Imagine you are driving and see something on the side of the road that interests you. How likely are you to stop?\n"
+                q+= "Please enter a number from 1-5, with 1 meaning not at all and 5 meaning completely."
+                inpu= how_much(q)
+                if inpu>3:
+                    res3+=5
+                elif inpu<3:
+                    res1+=5
+                else : res2+=3
+            case 9:
+                print("question 10")
         x=x+1
     if res1>=res2 and res1>=res3:
         ending1()
@@ -117,21 +180,23 @@ def game_loop(inp):
         ending3()
 
 def ending1():
-    print("Blossom Ending")
+    print("You are most like Blossom. Blossom is intelligent, level-headed, and responsible.\n She is also friendly and outgoing type of person. ")
 def ending2():
-    print("Bubbles Ending")
+    print("You are most like Bubbles. Bubbles is sweet-natured and optimistic.\n She tends to be driven by strong emotions"
+          " whether they be happy or sad ones. ")
 def ending3():
-    print("Buttercup Ending")
+    print("You are most like Buttercup. Buttercup is tough and a bit hotheaded. \n "
+          "She is more impulsive, but makes up for it with her strength.")
 
 
 print("Welcome to our personality quiz. Answer a few questions to find out which Powerpuff Girl you are.")
 print("To end the game, enter quit at any time.")
 
-game_loop(5)
+game_loop(9)
 while True:
     play_again = input("If you would like to take the quiz again, enter y. \nEnter anything else to exit.\n")
     if play_again == "y" or play_again == "Y":
-        game_loop(5)
+        game_loop(10)
     else:
         print("Thank you for playing! Goodbye.")
         quit()
